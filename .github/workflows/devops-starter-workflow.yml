@@ -8,7 +8,7 @@ on:
       - master
 
 env:
-  AZURE_WEBAPP_NAME: "erisonjavap0501"    # set this to your application's name
+  AZURE_WEBAPP_NAME: "erisonjav5656ap0501"    # set this to your application's name
   AZURE_WEBAPP_PACKAGE_PATH: "Application/build"      # set this to the path to your web app project, defaults to the repository root
   JAVA_VERSION: '1.8'             # set this to the java version to use
   RESOURCEGROUPNAME: "ericjavap-rg"
