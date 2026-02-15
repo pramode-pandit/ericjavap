@@ -28,7 +28,8 @@ jobs:
     name: Build application source
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout source code
+      uses: actions/checkout@v4
 
     - name: Set up java ${{ env.JAVA_VERSION }}
       uses: actions/setup-java@v1
@@ -150,4 +151,5 @@ jobs:
       run: |
         cd Tests\build\libs
         java -DwebAppUrl="https://${{ env.AZURE_WEBAPP_NAME }}.azurewebsites.net/" -DChromeWebDriver="$env:ChromeWebDriver" -cp SampleWebAppFunctionalTests-jar-with-dependencies.jar org.junit.platform.console.ConsoleLauncher --class-path SampleWebAppFunctionalTests-jar-with-dependencies.jar --scan-class-path --reports-dir reports --include-engine junit-vintage
+
 
