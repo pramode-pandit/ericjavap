@@ -13,12 +13,12 @@ on:
         required: false
         default: 'Manual test'
 env:
-  AZURE_WEBAPP_NAME: "erisonjav5656ap0501"    # set this to your application's name
+  AZURE_WEBAPP_NAME: "erisonjav5656ap0501xxxx"    # set this to your application's name
   AZURE_WEBAPP_PACKAGE_PATH: "Application/build"      # set this to the path to your web app project, defaults to the repository root
   JAVA_VERSION: '1.8'             # set this to the java version to use
-  RESOURCEGROUPNAME: "ericjavap-rg"
+  RESOURCEGROUPNAME: "ericjavap-rgxxxx"
   LOCATION: "South Central US"
-  HOSTINGPLANNAME: "ericjavap-plan"
+  HOSTINGPLANNAME: "ericjavap-planxxxx"
   APPINSIGHTLOCATION: "South Central US"
   SKU: "P1v2 Premium"
   WEBAPPTEMPLATENAME: "linux-webapp-template.json"
@@ -68,7 +68,7 @@ jobs:
     # Uploading Arm Templates to artifacts
     - name: Upload Arm templates to Artifact
       continue-on-error: false
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: deploymenttemplates
         path: deploymenttemplates
@@ -93,7 +93,7 @@ jobs:
 
     # Downloading Arm Templates
     - name: Download an Arm template
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v4
       continue-on-error: false
       with:
         name: deploymenttemplates
@@ -151,5 +151,6 @@ jobs:
       run: |
         cd Tests\build\libs
         java -DwebAppUrl="https://${{ env.AZURE_WEBAPP_NAME }}.azurewebsites.net/" -DChromeWebDriver="$env:ChromeWebDriver" -cp SampleWebAppFunctionalTests-jar-with-dependencies.jar org.junit.platform.console.ConsoleLauncher --class-path SampleWebAppFunctionalTests-jar-with-dependencies.jar --scan-class-path --reports-dir reports --include-engine junit-vintage
+
 
 
