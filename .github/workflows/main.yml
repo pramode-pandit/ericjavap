@@ -15,7 +15,7 @@ permissions:
   actions: write
   
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -54,3 +54,10 @@ jobs:
 
           # 2. Update the variable in the repository using GitHub CLI
           gh variable set APP_VERSION --body "$NEW_VAL" 
+
+
+  deploy-azure:
+    needs: build
+    uses: ./.github/workflows/azure.yml
+    with:
+      environment: dev
