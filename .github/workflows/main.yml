@@ -30,7 +30,7 @@ jobs:
       - name: Increment and Update Variable
         env:
           # Use your PAT stored in Secrets for API access
-          GH_TOKEN: ${{ secrets.APP_TOKEN }}
+          GH_TOKEN: ${{ secrets.APP_PAT }}
           #GH_TOKEN: ${{ github.token }}
           # Access the existing variable value
           CURRENT_VAL: ${{ vars.APP_VERSION }}
