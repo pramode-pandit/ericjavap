@@ -17,7 +17,6 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: config
 
     steps:
       - name: Checkout Code
@@ -31,10 +30,10 @@ jobs:
       - name: Increment and Update Variable
         env:
           # Use your PAT stored in Secrets for API access
-          # GH_TOKEN: ${{ secrets.MY_TOKEN }}
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.APP_TOKEN }}
+          #GH_TOKEN: ${{ github.token }}
           # Access the existing variable value
-          CURRENT_VAL: ${{ vars.MY_VERSION }}
+          CURRENT_VAL: ${{ vars.APP_VERSION }}
         run: |
           # 1. Calculate the new value
           version=$CURRENT_VAL
@@ -54,4 +53,4 @@ jobs:
           echo "Incrementing MY_COUNTER: $CURRENT_VAL -> $NEW_VAL"
 
           # 2. Update the variable in the repository using GitHub CLI
-          gh variable set MY_VERSION --body "$NEW_VAL" --env config
+          gh variable set APP_VERSION --body "$NEW_VAL" 
