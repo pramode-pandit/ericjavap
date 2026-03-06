@@ -50,4 +50,4 @@ jobs:
           echo "Incrementing MY_COUNTER: $CURRENT_VAL -> $NEW_VAL"
 
           # 2. Update the variable in the repository using GitHub CLI
-          gh variable set MY_VERSION --body "$NEW_VAL" --env config.
+          gh variable set MY_VERSION --body "$NEW_VAL" --env config
