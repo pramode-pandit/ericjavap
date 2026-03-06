@@ -17,3 +17,17 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+
+      - name: Increment and Update Variable
+        env:
+          # Use your PAT stored in Secrets for API access
+          GH_TOKEN: ${{ secrets.MY_TOKEN }}
+          # Access the existing variable value
+          CURRENT_VAL: ${{ vars.MY_VERSION }}
+        run: |
+          # 1. Calculate the new value
+          NEW_VAL=$((CURRENT_VAL + 1))
+          echo "Incrementing MY_COUNTER: $CURRENT_VAL -> $NEW_VAL"
+
+          # 2. Update the variable in the repository using GitHub CLI
+          gh variable set MY_VERSION --body "$NEW_VAL"
