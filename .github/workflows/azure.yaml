@@ -1,0 +1,17 @@
+name: Azure Deployment
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to Azure
+        run: |
+          echo "Deploying to ${{ inputs.environment }}"
