@@ -28,7 +28,20 @@ jobs:
           CURRENT_VAL: ${{ vars.MY_VERSION }}
         run: |
           # 1. Calculate the new value
-          NEW_VAL=$((CURRENT_VAL + 1))
+          version=$CURRENT_VAL
+          
+          prefix=$(echo $version | cut -d'-' -f1)
+          num=$(echo $version | cut -d'-' -f2)
+
+          major=$(echo $num | cut -d'.' -f1)
+          minor=$(echo $num | cut -d'.' -f2)
+          patch=$(echo $num | cut -d'.' -f3)
+
+          patch=$((patch + 1))
+
+          new_version="${prefix}-${major}.${minor}.${patch}"
+
+          NEW_VAL=$new_version
           echo "Incrementing MY_COUNTER: $CURRENT_VAL -> $NEW_VAL"
 
           # 2. Update the variable in the repository using GitHub CLI
