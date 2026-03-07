@@ -10,7 +10,7 @@ on:
 
   
 jobs:
-  deploy:
+  init-version:
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment || 'dev' }} 
 
@@ -21,7 +21,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Print imputs
+      - name: Print inputs
         run: |
           echo "environment_name: ${{ inputs.environment }}"
           echo "curr_ver_variable_name: CONFIG_CURR_VERSION "
