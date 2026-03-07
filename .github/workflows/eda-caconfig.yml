@@ -50,7 +50,9 @@ jobs:
 
   build-java:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Build Java
-        run: "echo mvn"
+        run: "echo  ${{ steps.version_step.outputs.version }}"
+        
+      
