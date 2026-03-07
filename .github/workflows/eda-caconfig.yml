@@ -29,9 +29,13 @@ jobs:
       - name: Increment Version
         uses: ./.github/actions/update-version
         with:
-          variable_name: CONFIG_CURR_VERSION 
           environment_name: ${{ inputs.environment }}
-          current_value: ${{ vars.CONFIG_CURR_VERSION  }}
+          curr_ver_variable_name: CONFIG_CURR_VERSION 
+          curr_ver_value: ${{ vars.CONFIG_CURR_VERSION  }}
+          prev_ver_variable_name: CONFIG_CURR_VERSION 
+          prev_ver_value: ${{ vars.CONFIG_CURR_VERSION  }}
 
       - name: Print version
-        run: echo "$current_value"
+        run: |
+          echo "CONFIG_CURR_VERSION: ${{ vars.CONFIG_CURR_VERSION }}"
+          echo "CONFIG_PREV_VERSION: ${{ vars.CONFIG_PREV_VERSION }}"
