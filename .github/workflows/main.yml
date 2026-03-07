@@ -11,7 +11,7 @@ on:
         required: true
         default: 'dev'
 jobs:
-  build:
+  prepare:
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment || 'dev' }} 
 
@@ -28,7 +28,7 @@ jobs:
           echo "CONFIG_PREV_VERSION: ${{ vars.CONFIG_PREV_VERSION }}"
 
   build-eda-caconfig:
-    needs: build
+    needs: prepare
     uses: ./.github/workflows/eda-caconfig.yml
     with:
       environment: ${{ inputs.environment }}
