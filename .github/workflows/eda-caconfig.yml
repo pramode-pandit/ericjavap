@@ -30,6 +30,7 @@ jobs:
           echo "previous_value: ${{ vars.CONFIG_PREV_VERSION  }}"
 
       - name: Increment Version
+        id: version_step
         uses: ./.github/actions/update-version
         with:
           environment_name: ${{ inputs.environment }}
@@ -43,3 +44,8 @@ jobs:
         run: |
           echo "CONFIG_CURR_VERSION: ${{ vars.CONFIG_CURR_VERSION }}"
           echo "CONFIG_PREV_VERSION: ${{ vars.CONFIG_PREV_VERSION }}"
+
+      - name: Print version
+        run: |
+          echo "NEW VERSION: ${{ steps.version_step.outputs.new_version }}"
+          echo "OLD VERSION: ${{ steps.version_step.outputs.old_version }}"
