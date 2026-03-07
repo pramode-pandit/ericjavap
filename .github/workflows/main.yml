@@ -22,7 +22,7 @@ jobs:
       - name: List all environment variables
         run: env
 
-      - name: List ${{ inputs.environment  }}  variables
+      - name: List ${{ inputs.environment || 'dev' }}  variables
         run: |
           echo "CONFIG_CURR_VERSION: ${{ vars.CONFIG_CURR_VERSION }}"
           echo "CONFIG_PREV_VERSION: ${{ vars.CONFIG_PREV_VERSION }}"
