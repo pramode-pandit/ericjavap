@@ -17,9 +17,9 @@ jobs:
       - name: Increment Version
         uses: ./.github/actions/update-version
         with:
-          variable_name: MY_VERSION
+          variable_name: APP_VERSION 
           environment_name: config
-          current_value: ${{ vars.MY_VERSION }}
+          current_value: ${{ vars.APP_VERSION  }}
 
       - name: Print version
         run: echo "$current_value"
