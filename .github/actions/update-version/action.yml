@@ -21,6 +21,10 @@ inputs:
   prev_ver_value:
     required: true
     description: "Current prev_ver_value value"
+
+  github_token:
+    required: true
+    description: "Token to update GitHub variables"
   
 runs:
   using: "composite"
@@ -28,7 +32,8 @@ runs:
   steps:
     - shell: bash
       env:
-        GH_TOKEN: ${{ github.token }}
+        GH_TOKEN: ${{ inputs.github_token }}
+        
       run: |
         version="${{ inputs.curr_ver_value }}"
 
