@@ -30,7 +30,8 @@ runs:
   using: "composite"
 
   steps:
-    - shell: bash
+    - id: increment
+      shell: bash
       env:
         GH_TOKEN: ${{ inputs.github_token }}
         
@@ -64,5 +65,8 @@ runs:
 outputs:
   version:
     description: "New version"
+    value: ${{ steps.increment.outputs.version }}
+    
   old_version:
     description: "Old version"
+    value: ${{ steps.increment.outputs.old_version }}
