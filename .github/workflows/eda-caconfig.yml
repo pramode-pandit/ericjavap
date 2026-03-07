@@ -45,3 +45,6 @@ jobs:
         run: |
           echo "NEW VERSION: ${{ steps.version_step.outputs.version }}"
           echo "OLD VERSION: ${{ steps.version_step.outputs.old_version }}"
+
+      - name: Build Java
+        run: "echo mvn"
