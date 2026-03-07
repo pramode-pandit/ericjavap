@@ -1,0 +1,42 @@
+name: "Update GitHub Variable Version"
+description: "Increment version and update GitHub environment variable"
+
+inputs:
+  variable_name:
+    required: true
+    description: "GitHub variable name"
+
+  environment_name:
+    required: true
+    description: "Environment name"
+
+  current_value:
+    required: true
+    description: "Current version value"
+
+runs:
+  using: "composite"
+
+  steps:
+    - shell: bash
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: |
+        version="${{ inputs.current_value }}"
+
+        prefix=$(echo $version | cut -d'-' -f1)
+        num=$(echo $version | cut -d'-' -f2)
+
+        major=$(echo $num | cut -d'.' -f1)
+        minor=$(echo $num | cut -d'.' -f2)
+        patch=$(echo $num | cut -d'.' -f3)
+
+        patch=$((patch + 1))
+
+        new_version="${prefix}-${major}.${minor}.${patch}"
+
+        echo "Incrementing ${{ inputs.variable_name }}: $version -> $new_version"
+
+        gh variable set ${{ inputs.variable_name }} \
+          --env ${{ inputs.environment_name }} \
+          --body "$new_version"
