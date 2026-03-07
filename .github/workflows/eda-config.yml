@@ -1,4 +1,4 @@
-name: Azure Deployment
+name: Build EDA Config
 
 on:
   workflow_call:
