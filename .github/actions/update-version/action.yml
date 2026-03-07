@@ -2,18 +2,26 @@ name: "Update GitHub Variable Version"
 description: "Increment version and update GitHub environment variable"
 
 inputs:
-  variable_name:
-    required: true
-    description: "GitHub variable name"
-
   environment_name:
     required: true
     description: "Environment name"
-
-  current_value:
+    
+  curr_ver_variable_name:
     required: true
-    description: "Current version value"
+    description: "GitHub curr_ver_variable_name name"
 
+  prev_ver_variable_name:
+    required: true
+    description: "GitHub prev_ver_variable_name name"
+
+  curr_ver_value:
+    required: true
+    description: "Current curr_ver_value value"
+    
+  prev_ver_value:
+    required: true
+    description: "Current prev_ver_value value"
+    
 runs:
   using: "composite"
 
@@ -22,7 +30,7 @@ runs:
       env:
         GH_TOKEN: ${{ github.token }}
       run: |
-        version="${{ inputs.current_value }}"
+        version="${{ inputs.curr_ver_value }}"
 
         prefix=$(echo $version | cut -d'-' -f1)
         num=$(echo $version | cut -d'-' -f2)
@@ -35,8 +43,12 @@ runs:
 
         new_version="${prefix}-${major}.${minor}.${patch}"
 
-        echo "Incrementing ${{ inputs.variable_name }}: $version -> $new_version"
+        echo "Incrementing ${{ inputs.curr_ver_variable_name }}: $version -> $new_version"
 
-        gh variable set ${{ inputs.variable_name }} \
+        gh variable set ${{ inputs.curr_ver_variable_name }} \
           --env ${{ inputs.environment_name }} \
           --body "$new_version"
+
+        gh variable set ${{ inputs.prev_ver_variable_name }} \
+          --env ${{ inputs.environment_name }} \
+          --body "$version"
