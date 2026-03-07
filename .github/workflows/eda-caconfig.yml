@@ -47,5 +47,5 @@ jobs:
 
       - name: Print version
         run: |
-          echo "NEW VERSION: ${{ steps.version_step.outputs.new_version }}"
+          echo "NEW VERSION: ${{ steps.version_step.outputs.version }}"
           echo "OLD VERSION: ${{ steps.version_step.outputs.old_version }}"
