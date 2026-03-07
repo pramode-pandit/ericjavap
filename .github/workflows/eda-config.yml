@@ -18,7 +18,7 @@ jobs:
         uses: ./.github/actions/update-version
         with:
           variable_name: CONFIG_CURR_VERSION 
-          environment_name: dev
+          environment_name: ${{ inputs.environment }}
           current_value: ${{ vars.CONFIG_CURR_VERSION  }}
 
       - name: Print version
