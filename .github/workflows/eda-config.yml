@@ -18,6 +18,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Print imputs
+        run: |
+          echo "environment_name: ${{ inputs.environment }}"
+          echo "variable_name: CONFIG_CURR_VERSION "
+          echo "current_value: ${{ vars.CONFIG_CURR_VERSION  }}"
+
       - name: Increment Version
         uses: ./.github/actions/update-version
         with:
