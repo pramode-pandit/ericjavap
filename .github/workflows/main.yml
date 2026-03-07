@@ -37,3 +37,4 @@ jobs:
     uses: ./.github/workflows/eda-caconfig.yml
     with:
       environment: ${{ inputs.environment || 'dev' }}
+    secrets: inherit
