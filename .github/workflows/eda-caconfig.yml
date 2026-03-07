@@ -6,12 +6,16 @@ on:
       environment:
         required: true
         type: string
-
+        
+permissions:
+  contents: write
+  actions: write
+  
 jobs:
   deploy:
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment || 'dev' }} 
-      
+
     steps:
       - uses: actions/checkout@v4
 
