@@ -12,6 +12,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deploy to Azure
-        run: |
-          echo "Deploying to ${{ inputs.environment }}"
+      - uses: actions/checkout@v4
+
+      - name: Increment Version
+        uses: ./.github/actions/update-version
+        with:
+          variable_name: MY_VERSION
+          environment_name: config
+          current_value: ${{ vars.MY_VERSION }}
+
+      - name: Print version
+        run: echo "$current_value"
