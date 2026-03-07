@@ -20,6 +20,6 @@ jobs:
 
   build-eda-config:
     needs: build
-    uses: ./.github/workflows/eda-config.yml
+    uses: ./.github/workflows/eda-caconfig.yml
     with:
       environment: dev
