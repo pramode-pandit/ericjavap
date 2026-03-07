@@ -56,7 +56,7 @@ jobs:
           gh variable set APP_VERSION --body "$NEW_VAL" 
 
 
-  deploy-azure:
+  build-eda-config:
     needs: build
     uses: ./.github/workflows/eda-config.yml
     with:
