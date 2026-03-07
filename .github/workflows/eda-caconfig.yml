@@ -40,10 +40,6 @@ jobs:
           prev_ver_value: ${{ vars.CONFIG_PREV_VERSION  }}
           github_token: ${{ secrets.GH_ADMIN_TOKEN }}
           
-      - name: Print version
-        run: |
-          echo "CONFIG_CURR_VERSION: ${{ vars.CONFIG_CURR_VERSION }}"
-          echo "CONFIG_PREV_VERSION: ${{ vars.CONFIG_PREV_VERSION }}"
 
       - name: Print version
         run: |
