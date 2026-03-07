@@ -6,7 +6,7 @@ on:
       - master
   workflow_dispatch: # This enables the manual trigger button
     inputs:
-      environmnet:
+      environment :
         description: 'dev|stg|prod'
         required: true
         default: 'dev'
@@ -21,7 +21,7 @@ jobs:
       - name: List all environment variables
         run: env
 
-      - name: List ${{ inputs.environmnet }}  variables
+      - name: List ${{ inputs.environment  }}  variables
         run: |
           echo "CONFIG_CURR_VERSION: ${{ vars.CONFIG_CURR_VERSION }}"
           echo "CONFIG_PREV_VERSION: ${{ vars.CONFIG_PREV_VERSION }}"
