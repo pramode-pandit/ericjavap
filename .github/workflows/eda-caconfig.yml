@@ -1,4 +1,4 @@
-name: Build EDA Config
+name: Build EDA CA Config
 
 on:
   workflow_call:
