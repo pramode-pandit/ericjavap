@@ -58,6 +58,6 @@ jobs:
 
   deploy-azure:
     needs: build
-    uses: ./.github/workflows/azure.yml
+    uses: ./.github/workflows/eda-config.yml
     with:
       environment: dev
