@@ -31,4 +31,4 @@ jobs:
     needs: build
     uses: ./.github/workflows/eda-caconfig.yml
     with:
-      environment: dev
+      environment: ${{ inputs.environment }}
