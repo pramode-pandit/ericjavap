@@ -38,3 +38,10 @@ jobs:
     with:
       environment: ${{ inputs.environment || 'dev' }}
     secrets: inherit
+
+  deploy:
+    needs: build-eda-caconfig
+    uses: ./.github/workflows/deploy.yml
+    with:
+      environment: ${{ inputs.environment || 'dev' }}
+    secrets: inherit
