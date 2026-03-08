@@ -64,8 +64,22 @@ jobs:
 
   build-image:
     runs-on: ubuntu-latest
+    environment: ${{ inputs.environment || 'dev' }}
     needs: build-java
     steps:
-      - name: Build Docker Image
+      - name: Docker Login
+        run: |
+          echo "Version: ${{ needs.build-java.outputs.version }}"
+
+      - name: Docker Build
+        run: |
+          echo "Version: ${{ needs.build-java.outputs.version }}"
+
+      - name: Docker Push
+        run: |
+          echo "Version: ${{ needs.build-java.outputs.version }}"
+
+      - name: Docker save
+        if: ${{ inputs.environment == 'prod' }}
         run: |
           echo "Version: ${{ needs.build-java.outputs.version }}"
