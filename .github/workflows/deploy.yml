@@ -7,6 +7,9 @@ on:
         required: true
         type: string
         
+      config_version:
+        required: true
+        type: string     
 
   
 jobs:
@@ -24,4 +27,8 @@ jobs:
       - name: Download eda chart
         run: |
           echo "Downloading chart"
+
+      - name: Available Images to deploy
+        run: |
+          echo "Config Image: config:${{ inputs.config_version }}"
         
