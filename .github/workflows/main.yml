@@ -46,3 +46,9 @@ jobs:
     with:
       environment: ${{ inputs.environment || 'dev' }}
     secrets: inherit
+
+  debug:
+    needs: build-eda-caconfig
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo '${{ toJson(needs.build-eda-caconfig.outputs) }}'
