@@ -51,11 +51,12 @@ jobs:
 
 
 
-#  build-java:
-#    runs-on: ubuntu-latest
-#    needs: init-version
-#    steps:
-#      - name: Build Java
-#        run: "echo Version: ${{ needs.init-version.outputs.version }}"
+  build-java:
+    runs-on: ubuntu-latest
+    needs: init-version
+    steps:
+      - name: Build Java
+        run: |
+          echo "Version: ${{ needs.init-version.outputs.version }}"
         
       
