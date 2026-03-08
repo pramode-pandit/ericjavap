@@ -1,4 +1,4 @@
-name: Build EDA CA Config
+name: Deploy CA
 
 on:
   workflow_call:
