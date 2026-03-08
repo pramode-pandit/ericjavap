@@ -7,6 +7,10 @@ on:
         required: true
         type: string
         
+    outputs:
+      version:
+        description: "Generated version"
+        value: ${{ jobs.init-version.outputs.version }}        
 
   
 jobs:
