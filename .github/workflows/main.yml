@@ -39,6 +39,17 @@ jobs:
       environment: ${{ inputs.environment || 'dev' }}
     secrets: inherit
 
+  get-version:
+    runs-on: ubuntu-latest
+    needs: build-eda-caconfig
+    outputs:
+      version: ${{ needs.build-eda-caconfig.outputs.version }}
+
+    steps:
+      - run: |
+          echo "Version: ${{ needs.build-eda-caconfig.outputs.version }}"
+
+    
   deploy:
     if: ${{ (inputs.environment || 'dev') == 'dev' }}
     needs: build-eda-caconfig
