@@ -46,8 +46,8 @@ jobs:
           echo "NEW VERSION: ${{ steps.version_step.outputs.version }}"
           echo "OLD VERSION: ${{ steps.version_step.outputs.old_version }}"
 
-#     outputs:
-#       version: ${{ steps.version_step.outputs.version }}
+    outputs:
+      version: ${{ steps.version_step.outputs.version }}
 
 
 
