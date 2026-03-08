@@ -1,0 +1,27 @@
+name: Build EDA CA Config
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+        
+
+  
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment || 'dev' }} 
+
+    permissions:
+      contents: write
+      actions: write
+  
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download eda chart
+        run: |
+          echo "Downloading chart"
+        
