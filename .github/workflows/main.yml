@@ -56,6 +56,7 @@ jobs:
     uses: ./.github/workflows/deploy.yml
     with:
       environment: ${{ inputs.environment || 'dev' }}
+      config_version: ${{ needs.build-eda-caconfig.outputs.version }}
     secrets: inherit
 
   debug:
