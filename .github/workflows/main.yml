@@ -7,7 +7,7 @@ on:
   workflow_dispatch: # This enables the manual trigger button
     inputs:
       environment :
-        description: 'dev|stg|prod'
+        description: 'dev|prod'
         required: true
         default: 'dev'
 
