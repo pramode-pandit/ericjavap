@@ -1,7 +1,11 @@
 import os
-from openai import OpenAI
+import google.generativeai as genai
 
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+# Configure API key
+genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+
+# Create model
+model = genai.GenerativeModel("gemini-1.5-flash")
 
 def analyze_logs(logs):
     prompt = f"""
@@ -9,15 +13,19 @@ You are a DevOps expert.
 
 Analyze this CI/CD failure log and provide:
 1. Root cause
-2. Fix suggestion (clear steps)
+2. Fix suggestion (step-by-step)
 
 Logs:
 {logs}
 """
 
-    response = client.chat.completions.create(
-        model="gpt-4o-mini",
-        messages=[{"role": "user", "content": prompt}]
-    )
+    response = model.generate_content(prompt)
+    return response.text
 
-    return response.choices[0].message.content
+
+# Example usage
+if __name__ == "__main__":
+    logs = "Error: Docker build failed due to missing file package.json"
+
+    result = analyze_logs(logs)
+    print(result)
