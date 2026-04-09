@@ -27,6 +27,7 @@ jobs:
       - name: Download eda chart
         run: |
           echo "Downloading chart"
+          ls -ltr logs/
 
       - name: Available Images to deploy
         run: |
