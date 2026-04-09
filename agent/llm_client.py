@@ -12,7 +12,7 @@ for m in models:
 
 
 # Create model
-model = genai.GenerativeModel("gemini-pro-latest")
+model = genai.GenerativeModel("gemini-2.5-flash")
 
 def analyze_logs(logs):
     prompt = f"""
